@@ -12,7 +12,7 @@ SHELL ["/bin/bash", "-c"]
 RUN \
   apt-get update && \
   apt-get install -y software-properties-common wget python3 locales \
-  python-pip curl
+  python-pip python-openssl curl
 
 # rvm
 RUN \
