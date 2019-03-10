@@ -27,7 +27,7 @@ RUN \
 
 # dockerize
 RUN \
-  wget https://github.com/jwilder/dockerize/releases/download/v$DOKERIZE_VERSION/dockerize-linux-amd64-v$DOKERIZE_VERSION.tar.gz && \
+  wget --progress=bar:force:noscroll https://github.com/jwilder/dockerize/releases/download/v$DOKERIZE_VERSION/dockerize-linux-amd64-v$DOKERIZE_VERSION.tar.gz && \
   tar -C /usr/local/bin -xvzf dockerize-linux-amd64-v$DOKERIZE_VERSION.tar.gz && \
   rm dockerize-linux-amd64-v$DOKERIZE_VERSION.tar.gz
 
