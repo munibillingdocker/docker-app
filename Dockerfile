@@ -39,8 +39,8 @@ RUN localedef en_US.UTF-8 -i en_US -fUTF-8 && \
 RUN pip install --upgrade pip
 
 # install swiftly (and six, a pre-req for swiftly)
-RUN pip install --ignore-installed six && \
-    pip install swiftly
+RUN pip install --ignore-installed --no-cache-dir six && \
+    pip install --no-cache-dir swiftly
 
 # setup /root/.bashrc
 RUN echo 'eval `ssh-agent -s`' >> /root/.bashrc && \
