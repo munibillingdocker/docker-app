@@ -39,7 +39,7 @@ RUN localedef en_US.UTF-8 -i en_US -fUTF-8 && \
 RUN pip install --upgrade pip
 
 # install swiftly (and six, a pre-req for swiftly)
-RUN pip install six && \
+RUN pip install --ignore-installed six && \
     pip install swiftly
 
 # setup /root/.bashrc
