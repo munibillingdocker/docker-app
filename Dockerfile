@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 # Set variables
 ENV DOKERIZE_VERSION="0.6.1"
@@ -12,7 +12,7 @@ SHELL ["/bin/bash", "-c"]
 RUN \
   apt-get update && \
   apt-get install -y software-properties-common wget python3 locales \
-  python-pip python-openssl curl
+  python3-pip python3-openssl curl
 
 # rvm
 RUN \
@@ -36,11 +36,11 @@ RUN localedef en_US.UTF-8 -i en_US -fUTF-8 && \
   echo "LANG=en_US.UTF-8" >> /etc/default/locale
 
 # update pip
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 # install swiftly (and six, a pre-req for swiftly)
-RUN pip install --ignore-installed --no-cache-dir six && \
-    pip install --no-cache-dir swiftly
+RUN pip3 install --ignore-installed --no-cache-dir six && \
+    pip3 install --no-cache-dir swiftly
 
 # setup /root/.bashrc
 RUN echo 'eval `ssh-agent -s`' >> /root/.bashrc && \
