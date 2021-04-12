@@ -42,10 +42,5 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --ignore-installed --no-cache-dir six && \
     pip3 install --no-cache-dir swiftly
 
-# setup /root/.bashrc
-RUN echo 'eval `ssh-agent -s`' >> /root/.bashrc && \
-    echo "ssh-add" >> /root/.bashrc && \
-    echo '[[ -s "/usr/share/rvm/scripts/rvm" ]] && source "/usr/share/rvm/scripts/rvm"' >> /root/.bashrc
-
 CMD ["/bin/bash"]
 
