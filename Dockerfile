@@ -3,9 +3,6 @@ FROM ubuntu:bionic
 # Set variables
 ENV DOKERIZE_VERSION="0.6.1"
 
-# make directory for rvm
-RUN mkdir -p /usr/share/rvm
-
 # change to Bash
 SHELL ["/bin/bash", "-c"]
 
@@ -13,17 +10,6 @@ RUN \
   apt-get update && \
   apt-get install -y software-properties-common wget python3 locales \
   python3-pip python3-openssl curl
-
-# rvm
-RUN \
-  apt-add-repository -y ppa:rael-gc/rvm && \
-  apt-get update && \
-  apt-get install -y rvm && \
-  source /usr/share/rvm/scripts/rvm && \
-  rvm requirements && \
-  apt-get -y autoremove && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
 
 # dockerize
 RUN \
