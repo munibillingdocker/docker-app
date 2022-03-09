@@ -1,7 +1,10 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # Set variables
-ENV DOKERIZE_VERSION="0.6.1"
+ENV \
+  DOKERIZE_VERSION="0.6.1" \
+  DEBIAN_FRONTEND=noninteractive \
+  TZ="America/Chicago"
 
 # change to Bash
 SHELL ["/bin/bash", "-c"]
@@ -9,7 +12,13 @@ SHELL ["/bin/bash", "-c"]
 RUN \
   apt-get update && \
   apt-get install -y software-properties-common wget python3 locales \
-  python3-pip python3-openssl curl
+    python3-pip python3-openssl curl && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/* && \
+
+  # timezone config
+  ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && \
+  dpkg-reconfigure --frontend noninteractive tzdata
 
 # dockerize
 RUN \
