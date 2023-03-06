@@ -9,6 +9,9 @@ ENV \
 # change to Bash
 SHELL ["/bin/bash", "-c"]
 
+# bust cache to force rebuild
+RUN date > /tmp/timestamp
+
 RUN \
   apt-get update && \
   apt-get install -y software-properties-common wget python3 locales \
